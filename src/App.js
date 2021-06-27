@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import "./app.scss";
+import Selector from "./component/Selector";
+/** shift + alt + o xoa import th */
 
-function App() {
+
+function App(props) {
+  
+  const [items, setItems] = React.useState(["Hoa","Huong","Ha"]);
+  function updateItems(){
+    if(items === ["Hoa","Huong","Ha"]){
+      setItems(["Ronaldo","Messi","Neymar"]);
+    }
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      {/* <Selector isMultiChoice={false} onLoad = {updateItems}/> */}
+      <Selector isMultiChoice={false} items={["Ronaldo","Messi","Neymar"]}/>
     </div>
   );
 }
