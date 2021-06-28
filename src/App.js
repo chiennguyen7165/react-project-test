@@ -1,22 +1,29 @@
-import React from "react";
+import React, { useCallback } from "react";
 import "./App.css";
 import "./app.scss";
 import Selector from "./component/Selector";
 /** shift + alt + o xoa import th */
 
-
 function App(props) {
-  
-  const [items, setItems] = React.useState(["Hoa","Huong","Ha"]);
-  function updateItems(){
-    if(items === ["Hoa","Huong","Ha"]){
-      setItems(["Ronaldo","Messi","Neymar"]);
-    }
-  }
+  const [state, setItems] = React.useState({});
+  // const [choice, setChoice] = React.useState(false);
+  // function updateItems(){
+  //   if(items === ["Hoa","Huong","Ha"]){
+  //     console.log("Updating ...")
+  //     setItems(["Ronaldo","Messi","Neymar"]);
+  //   }
+  // }
+
+React.useCallback(() => {
+  setItems({
+    state,items: ["Ronaldo", "Messi", "Neymar"],
+  });
+}, [state]);
+
   return (
     <div className="app">
       {/* <Selector isMultiChoice={false} onLoad = {updateItems}/> */}
-      <Selector isMultiChoice={false} items={["Ronaldo","Messi","Neymar"]}/>
+      <Selector/>
     </div>
   );
 }
