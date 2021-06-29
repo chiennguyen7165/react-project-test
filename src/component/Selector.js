@@ -7,9 +7,9 @@ class Selector extends React.Component {
     this.changeItems = this.changeItems.bind(this);
   }
 
-  changeItems() {
+  changeItems(newItems) {
     console.log("changeItems: ");
-    this.setState({ items: ["Ronaldo", "Messi", "Neymar", "Chien"] });
+    this.setState({ items: newItems });
   }
 
   render() {

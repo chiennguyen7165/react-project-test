@@ -14,16 +14,18 @@ function App(props) {
   //   }
   // }
 
-React.useCallback(() => {
-  setItems({
-    state,items: ["Ronaldo", "Messi", "Neymar"],
-  });
-}, [state]);
+  React.useCallback(() => {
+    setItems({
+      state,
+      items: ["Ronaldo", "Messi", "Neymar"],
+    });
+  }, [state]);
+
 
   return (
     <div className="app">
       {/* <Selector isMultiChoice={false} onLoad = {updateItems}/> */}
-      <Selector/>
+      <Selector />
     </div>
   );
 }
