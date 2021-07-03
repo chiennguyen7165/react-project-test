@@ -1,31 +1,30 @@
-import React, { useCallback } from "react";
+import React from "react";
 import "./App.css";
 import "./app.scss";
 import Selector from "./component/Selector";
 /** shift + alt + o xoa import th */
 
 function App(props) {
-  const [state, setItems] = React.useState({});
-  // const [choice, setChoice] = React.useState(false);
-  // function updateItems(){
-  //   if(items === ["Hoa","Huong","Ha"]){
-  //     console.log("Updating ...")
-  //     setItems(["Ronaldo","Messi","Neymar"]);
-  //   }
-  // }
+  const items1 = ["Hoa", "Huong", "Ha", "Chien"];
+  const items2 = ["Ronaldo", "Messi", "Neymar", "Chien"];
 
-  React.useCallback(() => {
-    setItems({
-      state,
-      items: ["Ronaldo", "Messi", "Neymar"],
-    });
-  }, [state]);
+  const[itemSelected, setItemSelected] = React.useState(null);
+  // const handleChangeSelector = React.useCallback((selectedItem) => {
+  //   console.log("handleChangeSelector", selectedItem);
+  //   alert(selectedItem);
+  // }, []);
 
+  // cách dùng useState
+  const handleChangeSelector = React.useCallback((value) => {
+    setItemSelected(value);
+  }, []);
 
   return (
     <div className="app">
-      {/* <Selector isMultiChoice={false} onLoad = {updateItems}/> */}
-      <Selector />
+      <Selector mode="single" onSelected={handleChangeSelector} list={items1} />
+      <Selector mode="single" onSelected={handleChangeSelector} list={items2} />
+      <hr/>
+      {itemSelected}
     </div>
   );
 }
